@@ -104,7 +104,7 @@
 				    				<td>".$row['jenisakta']."</td>
 				    				<td>".$row['namapemohon'].", ".$row['alamatpemohon']."</td>
 				    				<td>".$row['namapenerima'].", ".$row['alamatpenerima']."</td>
-				    				<td></td>
+				    				 <td>".$row['jenishak'].", ".$row['nohak']."</td>
 				    				<td>".$row['alamattanah']."</td>
 				    				<td>".$row['luastanah']."</td>
 				    				<td>".$row['luasbangunan']."</td>

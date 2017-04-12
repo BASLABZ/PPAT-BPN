@@ -10,23 +10,44 @@
                           $fileName = $_FILES['file']['name'];
                           $move = move_uploaded_file($_FILES['file']['tmp_name'], '../dokumen/'.$fileName);
                      if ($move) {
-                           $query  = mysql_query("INSERT INTO ppat (tanggalinput, namapemohon,
+                          if ($_POST['jenishak'] == 'LAIN') {
+                            $query  = mysql_query("INSERT INTO ppat (tanggalinput, namapemohon,
                                      alamatpemohon, namapenerima, alamatpenerima,
                                      alamattanah, jenisakta, noakta,
                                      tanggalakta, jenisaset, luastanah,
                                      luasbangunan, harga, NOP,
                                      NJOP, tahun, tgl_ssp,
                                      jumlah_ssp, tgl_bphtb, jumlah_bphtb,
-                                     status, verifikasi, keterangan,file,idpengguna
+                                     status, verifikasi, keterangan,file,idpengguna,jenishak,nohak
                                      ) 
                               VALUES (
                                     NOW(),'".$_POST['namapemohon']."',
                                     '".$_POST['alamatpemohon']."', '".$_POST['namapenerima']."',
                                     '".$_POST['alamatpenerima']."', '".$_POST['alamattanah']."',
                                     '".$_POST['jenisakta']."', '".$_POST['noakta']."',
-                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."');
-                                      ");                   
-                     }
+                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."','".$_POST['jenishak']."','".$_POST['nohak']."')
+                                      ");
+                          }else{
+                            $query  = mysql_query("INSERT INTO ppat (tanggalinput, namapemohon,
+                                     alamatpemohon, namapenerima, alamatpenerima,
+                                     alamattanah, jenisakta, noakta,
+                                     tanggalakta, jenisaset, luastanah,
+                                     luasbangunan, harga, NOP,
+                                     NJOP, tahun, tgl_ssp,
+                                     jumlah_ssp, tgl_bphtb, jumlah_bphtb,
+                                     status, verifikasi, keterangan,file,idpengguna,jenishak,nohak
+                                     ) 
+                              VALUES (
+                                    NOW(),'".$_POST['namapemohon']."',
+                                    '".$_POST['alamatpemohon']."', '".$_POST['namapenerima']."',
+                                    '".$_POST['alamatpenerima']."', '".$_POST['alamattanah']."',
+                                    '".$_POST['jenisakta']."', '".$_POST['noakta']."',
+                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."','".$_POST['jenishak']."','".$_POST['nohak']."')
+                                      ");
+                          }
+                                              
+                          }
+                     
                         
                      }else{
                           $query  = mysql_query("INSERT INTO ppat (tanggalinput, namapemohon,
@@ -149,6 +170,24 @@
                        <option value="SKMHT">AKTA SKMHT</option>
                     </select>
                     </div>
+                    <div class="form-group">
+                      <label>Jenis Hak</label>
+                      <select class="form-control" name="jenishak" id="jk" >
+                         <option value="null">-Pilih Jenis Hak-</option>
+                         <option value="HM">Hak Milik</option>
+                         <option value="HGU">Hak Guna Usaha</option>
+                         <option value="HGB">Hak Guna Bangunan</option>
+                         <option value="HP">Hak Pakai</option>
+                         <option value="HS">Hak Sewa</option>
+                         <option value="HMT">Hak Membuka Tanah</option>
+                         <option value="HMHH">Hak Memungut - Hasil Hutan</option>
+                         <option value="LAIN">Hak - Hak Lain</option>
+                    </select>
+                    </div>
+                    <div class="form-group" id="nohaks">
+                      <label>No Hak</label>
+                      <input type="text" class="form-control" ="" name="nohak">
+                    </div> 
 
                 <button class="btn btn-primary nextBtn btn-sm pull-right" type="button" >Selanjutnya  <span class="fa fa-arrow-right"></span> </button>
               </div>
@@ -157,7 +196,7 @@
           <div class="row setup-content" id="step-3">
             <div class="col-xs-6 col-md-offset-3">
               <div class="col-md-12">
-                <h3> Detail TANAH / ASET</h3>
+                <h3> DETAIL TANAH / ASET</h3>
                 <div class="form-group">
                       <label>Jenis Aset</label>
                       <select class="form-control" name="jenisaset" required id="jenisaset">
@@ -234,7 +273,5 @@
     </section>
 </div>
 <script type="text/javascript">
-  $('#jenisaset').change(function () {
-    $("#luastanah").attr("disabled", $("#jenisaset").val() == "TANAH");
-});
+
 </script>

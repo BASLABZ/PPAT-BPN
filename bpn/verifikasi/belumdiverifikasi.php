@@ -56,6 +56,7 @@
                   <th>Nama yang Mengalihkan</th>
                   <th>Alamat yang Mengalihkan</th>
                   <th>Alamat Tanah</th>
+                  <th>Jenis Hak & Nomor Hak</th>
                   <th>Jenis Akta</th>
                   <th>No Akta</th>
                   <th>Tanggal Akta</th>
@@ -79,16 +80,18 @@
                                   <td><?php echo $baris['namapemohon']; ?></td>
                                   <td><?php echo $baris['alamatpemohon']; ?></td>
                                   <td><?php echo $baris['alamattanah']; ?></td>
+                                   <td><?php echo $baris['jenishak']; echo ","; echo $baris['nohak']; ?></td>
                                   <td><?php echo $baris['jenisakta']; ?></td>
                                   <td><?php echo $baris['noakta']; ?></td>
                                   <td><?php echo $tanggalakta; ?></td>
                                   <td><?php echo $baris['status'] ?></td>
-                                  <td><img src='../dokumen/<?php echo $baris['file']; ?>' class='img-responsive img-thumbnail'></td>
-                                  <td><?php echo $baris['namalengkap']; ?></td>
                                   <td>
 
                                     <a href="index.php?hal=verifikasi/belumdiverifikasi&status=DITERIMA&verifikasi=DIVERIFIKASI&idppat=<?php echo $baris['idppat']; ?>"><span class="fa fa-exclamation-triangle"></span> <?php echo $baris['verifikasi']; ?> </a>
                                   </td>
+                                  <td><img src='../dokumen/<?php echo $baris['file']; ?>' class='img-responsive img-thumbnail'></td>
+                                  <td><?php echo $baris['namalengkap']; ?></td>
+                                  
                                   <td>
                                     <a href='index.php?hal=verifikasi/detail&id=<?php echo $baris['idppat']; ?>' class='btn btn-success btn-xs'> <span class='fa fa-eye'></span> Lihat</a>
                                     </td>

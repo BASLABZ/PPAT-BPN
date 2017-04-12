@@ -89,3 +89,18 @@ if (!isset($_SESSION['level']))
   header('location:../index.php');
 }
 ?>
+<script type="text/javascript">
+  $('#jenisaset').change(function () {
+    $("#luastanah").attr("disabled", $("#jenisaset").val() == "TANAH");
+  });
+
+  // function for check jenis hak
+
+  $('#jk').on('change', function () {
+    if ($this.value == "LAIN") {
+      alert('LAIN');
+    }else{
+      alert('SELAIN LAIN')
+    }
+  })
+</script>

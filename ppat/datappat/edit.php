@@ -14,7 +14,8 @@
                           $fileName = $_FILES['file']['name'];
                           $move = move_uploaded_file($_FILES['file']['tmp_name'], '../dokumen/'.$fileName);
                      if ($move) {
-                           $query  = mysql_query("UPDATE ppat SET
+                          if ($_POST['jenishak'] == 'LAIN') {
+                            $query  = mysql_query("UPDATE ppat SET
                                                   namapemohon = '".$_POST['namapemohon']."',
                                                   alamatpemohon = '".$_POST['alamatpemohon']."', namapenerima = '".$_POST['namapenerima']."', alamatpenerima = '".$_POST['alamatpenerima']."',
                                      alamattanah = '".$_POST['alamattanah']."',
@@ -30,12 +31,34 @@
                                      jumlah_ssp = '".$_POST['jumlah_ssp']."',
                                      tgl_bphtb = '".$konversitgl_bphtb."',
                                      jumlah_bphtb = '".$_POST['jumlah_bphtb']."',
-                                     status = 'MENUNGGU', verifikasi = 'BELUM DIVERIFIKASI', keterangan = '".$_POST['keterangan']."', file = '".$fileName."' where idppat = '".$id."' ");
+                                     status = 'MENUNGGU', verifikasi = 'BELUM DIVERIFIKASI', keterangan = '".$_POST['keterangan']."', file = '".$fileName."' , jenishak = '".$_POST['jenishak']."', nohak = '".$_POST['nohak']."' where idppat = '".$id."' ");
+                          }else{
+                            $query  = mysql_query("UPDATE ppat SET
+                                                  namapemohon = '".$_POST['namapemohon']."',
+                                                  alamatpemohon = '".$_POST['alamatpemohon']."', namapenerima = '".$_POST['namapenerima']."', alamatpenerima = '".$_POST['alamatpenerima']."',
+                                     alamattanah = '".$_POST['alamattanah']."',
+                                     jenisakta = '".$_POST['jenisakta']."',
+                                      noakta = '".$_POST['noakta']."',
+                                     tanggalakta = '".$konverttanggal."',
+                                     jenisaset = '".$_POST['jenisaset']."',
+                                     luastanah = '".$_POST['luastanah']."',
+                                     luasbangunan = '".$_POST['luasbangunan']."',
+                                     harga = '".$_POST['harga']."', NOP = '".$_POST['NOP']."',
+                                     NJOP = '".$_POST['NJOP']."', tahun = '".$tahun."', 
+                                     tgl_ssp = '".$konversitgl_ssp."',
+                                     jumlah_ssp = '".$_POST['jumlah_ssp']."',
+                                     tgl_bphtb = '".$konversitgl_bphtb."',
+                                     jumlah_bphtb = '".$_POST['jumlah_bphtb']."',
+                                     status = 'MENUNGGU', verifikasi = 'BELUM DIVERIFIKASI', keterangan = '".$_POST['keterangan']."', file = '".$fileName."' , jenishak = '".$_POST['jenishak']."', nohak = '".$_POST['nohak']."'  where idppat = '".$id."' ");
+                          }
+                           
+                          }
                                                         
-                     }
+                     
                         
                      }else{
-                          $query  = mysql_query("UPDATE ppat SET
+                          if ($_POST['jenishak']=='LAIN') {
+                            $query  = mysql_query("UPDATE ppat SET
                                                   namapemohon = '".$_POST['namapemohon']."',
                                                   alamatpemohon = '".$_POST['alamatpemohon']."', namapenerima = '".$_POST['namapenerima']."', alamatpenerima = '".$_POST['alamatpenerima']."',
                                      alamattanah = '".$_POST['alamattanah']."',
@@ -51,7 +74,26 @@
                                      jumlah_ssp = '".$_POST['jumlah_ssp']."',
                                      tgl_bphtb = '".$konversitgl_bphtb."',
                                      jumlah_bphtb = '".$_POST['jumlah_bphtb']."',
-                                     status = 'MENUNGGU', verifikasi = 'BELUM DIVERIFIKASI', keterangan = '".$_POST['keterangan']."'  where idppat = '".$id."' ");  
+                                     status = 'MENUNGGU', verifikasi = 'BELUM DIVERIFIKASI', keterangan = '".$_POST['keterangan']."' , jenishak = '".$_POST['jenishak']."', nohak = '".$_POST['nohak']."'   where idppat = '".$id."' ");  
+                          }else{
+                            $query  = mysql_query("UPDATE ppat SET
+                                                  namapemohon = '".$_POST['namapemohon']."',
+                                                  alamatpemohon = '".$_POST['alamatpemohon']."', namapenerima = '".$_POST['namapenerima']."', alamatpenerima = '".$_POST['alamatpenerima']."',
+                                     alamattanah = '".$_POST['alamattanah']."',
+                                     jenisakta = '".$_POST['jenisakta']."',
+                                      noakta = '".$_POST['noakta']."',
+                                     tanggalakta = '".$konverttanggal."',
+                                     jenisaset = '".$_POST['jenisaset']."',
+                                     luastanah = '".$_POST['luastanah']."',
+                                     luasbangunan = '".$_POST['luasbangunan']."',
+                                     harga = '".$_POST['harga']."', NOP = '".$_POST['NOP']."',
+                                     NJOP = '".$_POST['NJOP']."', tahun = '".$tahun."', 
+                                     tgl_ssp = '".$konversitgl_ssp."',
+                                     jumlah_ssp = '".$_POST['jumlah_ssp']."',
+                                     tgl_bphtb = '".$konversitgl_bphtb."',
+                                     jumlah_bphtb = '".$_POST['jumlah_bphtb']."',
+                                     status = 'MENUNGGU', verifikasi = 'BELUM DIVERIFIKASI', keterangan = '".$_POST['keterangan']."' , jenishak = '".$_POST['jenishak']."', nohak = '".$_POST['nohak']."'   where idppat = '".$id."' ");  
+                          }
                           }
 
        
@@ -109,7 +151,7 @@
         </div>
         <div class="form-group">
                   <label class="control-label">Upload Foto Scan Dokumen</label>
-                  <input type="file" name="file" required="">
+                  <input type="file" name="file" >
                   <span><i>Size Foto Max. 1.5 Mb</i></span>
                 </div>
         <div class="form-group">
@@ -177,6 +219,49 @@
                          
                     </select>
               </div>
+              <div class="form-group">
+                <label>Jenis Hak</label>
+                <select class="form-control" name="jenishak" required id="jk">
+                       <option value="null">-Pilih Jenis Hak-</option>
+                       <option value="HM"
+                        <?php if($row['jenishak']=='HM'){echo "selected=selected";}?>>
+                        Hak Milik
+                      </option>
+                       <option value="HGU"
+                        <?php if($row['jenishak']=='HGU'){echo "selected=selected";}?>>
+                          Hak Guna Usaha
+                      </option>
+                       <option value="HGB"
+                        <?php if($row['jenishak']=='HGB'){echo "selected=selected";}?>>
+                          Hak Guna Bangunan
+                      </option>
+                       <option value="HP"
+                        <?php if($row['jenishak']=='HP'){echo "selected=selected";}?>>
+                          Hak Pakai
+                      </option>
+                       <option value="HS"
+                        <?php if($row['jenishak']=='HS'){echo "selected=selected";}?>>
+                          Hak Sewa
+                      </option>
+                       <option value="HMT"
+                        <?php if($row['jenishak']=='HMT'){echo "selected=selected";}?>>
+                         Hak Membuka Tanah
+                      </option>
+                       <option value="HMHH"
+                        <?php if($row['jenishak']=='HMHH'){echo "selected=selected";}?>>
+                         Hak Memungut - Hasil Hutan
+                      </option>
+                       <option value="LAIN"
+                        <?php if($row['jenishak']=='LAIN'){echo "selected=selected";}?>>
+                         Hak - Hak Lain
+                      </option>
+                         
+                    </select>
+              </div>
+                <div class="form-group" id="nohaks">
+                      <label>No Hak</label>
+                      <input type="text" class="form-control" ="" name="nohak" value="<?php echo $row['nohak']; ?>">
+                    </div> 
               <div class="form-group">
                 <label>No AKTA</label>
                 <input type="text" class="form-control" name="noakta" required value="<?php echo $row['noakta']; ?>">

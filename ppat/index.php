@@ -96,4 +96,35 @@ if (!isset($_SESSION['level']))
 {
   header('location:../index.php');
 }
+
 ?>
+<script type="text/javascript">
+  $("#jk").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                // $(".box").not("." + optionValue).hide();
+                // $("." + optionValue).show();
+                if (optionValue == 'null') {
+                   $("#nohaks").hide();
+                 }else if(optionValue == 'LAIN'){
+                  $("#nohaks").show();
+                 }else if (optionValue== 'HM') {
+                  $("#nohaks").hide();
+                }else if (optionValue == 'HGU') {
+                  $("#nohaks").hide();
+                }else if (optionValue == 'HGB') {
+                  $("#nohaks").hide();
+                }else if (optionValue == 'HP') {
+                  $("#nohaks").hide();
+                }else if (optionValue == 'HS') {
+                  $("#nohaks").hide();
+                }else if (optionValue == 'HMT') {
+                  $("#nohaks").hide();
+                }else if (optionValue == 'HMHH') {
+                  $("#nohaks").hide();
+                }
+            }
+        });
+    }).change();
+</script>

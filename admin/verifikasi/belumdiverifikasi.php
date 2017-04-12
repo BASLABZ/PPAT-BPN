@@ -30,20 +30,22 @@
               </div>
               <div class="box-body">
               <div class="row">
+              <form class="role" method="POST" action="index.php?hal=verifikasi/result_filter_ppat">
                 <div class="col-md-6">
-                    <form class="role" method="POST">
-                      <select class="form-control select2">
+                    
+                      <select class="form-control select2" name="idpengguna">
                         <option>Pilih PPAT</option>
                         <?php 
-                          $querypengguna = mysql_query("SELECT * FROM pengguna order by idpengguna ASC");
+                          $querypengguna = mysql_query("SELECT * FROM pengguna  where level='ppat' order by idpengguna ASC");
                           while ($barispengguna = mysql_fetch_array($querypengguna)) {
                          ?>
                          <option value="<?php echo $barispengguna['idpengguna']; ?>"><?php echo $barispengguna['namalengkap']; ?></option>
                          <?php } ?>
                       </select>
-                    </form>
+                    
                   </div>
                   <div class="col-md-3"><button type="submit" class="btn btn-success"> <span class="fa fa-search"></span></button></div> 
+                  </form>
 
               </div>
               <br>
@@ -54,6 +56,7 @@
                   <th>Nama yang Mengalihkan</th>
                   <th>Alamat yang Mengalihkan</th>
                   <th>Alamat Tanah</th>
+                  <th>Jenis Hak & Nomor Hak</th>
                   <th>Jenis Akta</th>
                   <th>No Akta</th>
                   <th>Tanggal Akta</th>
@@ -77,16 +80,18 @@
                                   <td><?php echo $baris['namapemohon']; ?></td>
                                   <td><?php echo $baris['alamatpemohon']; ?></td>
                                   <td><?php echo $baris['alamattanah']; ?></td>
+                                   <td><?php echo $baris['jenishak']; echo ","; echo $baris['nohak']; ?></td>
                                   <td><?php echo $baris['jenisakta']; ?></td>
                                   <td><?php echo $baris['noakta']; ?></td>
                                   <td><?php echo $tanggalakta; ?></td>
                                   <td><?php echo $baris['status'] ?></td>
-                                  <td><img src='../dokumen/<?php echo $baris['file']; ?>' class='img-responsive img-thumbnail'></td>
-                                  <td><?php echo $baris['namalengkap']; ?></td>
                                   <td>
 
                                     <a href="index.php?hal=verifikasi/belumdiverifikasi&status=DITERIMA&verifikasi=DIVERIFIKASI&idppat=<?php echo $baris['idppat']; ?>"><span class="fa fa-exclamation-triangle"></span> <?php echo $baris['verifikasi']; ?> </a>
                                   </td>
+                                  <td><img src='../dokumen/<?php echo $baris['file']; ?>' class='img-responsive img-thumbnail'></td>
+                                  <td><?php echo $baris['namalengkap']; ?></td>
+                                  
                                   <td>
                                     <a href='index.php?hal=verifikasi/detail&id=<?php echo $baris['idppat']; ?>' class='btn btn-success btn-xs'> <span class='fa fa-eye'></span> Lihat</a>
                                     </td>

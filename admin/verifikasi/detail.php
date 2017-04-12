@@ -7,7 +7,7 @@
       <h1>DATA AKTA PPAT</h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">DATA PPAT</a></li>
+        <li><a href="#">Data Akta</a></li>
         <li class="active">Detail PPAT</li>
         <li><?php echo $row['noakta']; ?></li>
       </ol>
@@ -18,7 +18,7 @@
          <div class="col-md-6">
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">DATA PEMOHON & PENERIMA</h3>
+              <h3 class="box-title">DATA PIHAK YANG MENGALIHKAN & PENERIMA</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               </div>
@@ -27,11 +27,11 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label>Nama yang Mengalihkan</label>
+                  <label>Nama Pihak yang Mengalihkan</label>
                   <input type="text" class="form-control" name="namapemohon" required disabled value="<?php echo $row['namapemohon']; ?>"> 
                 </div>
                 <div class="form-group">
-                  <label>Alamat yang Mengalihkan</label>
+                  <label>Alamat Pihak yang Mengalihkan</label>
                   <textarea class="form-control" name="alamatpemohon" required disabled><?php echo $row['alamatpemohon']; ?></textarea>
                 </div>
                 <div class="form-group">
@@ -49,6 +49,9 @@
           </div>
           
         </div>
+        <div class="form-group">
+          <img src="../dokumen/<?php echo $row['file']; ?>" class="img-responsive dim_about">
+        </div>
        </div>
        <div class="col-md-6">
          <div class="box box-default">
@@ -64,7 +67,7 @@
               <div class="form-gruop">
                 <label>Tanggal Akta</label>
                 <div class="input-group">
-                <input type="text" class="form-control" id="tanggalakta" name="tanggalakta"  value="<?php echo $row['tanggalakta']; ?>" disabled>
+                <input type="text" class="form-control" id="tanggalakta" disabled  name="tanggalakta" value="<?php echo $row['tanggalakta']; ?>">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
               </div>
               </div>
@@ -116,6 +119,49 @@
                 <input type="text" class="form-control" name="noakta" required disabled value="<?php echo $row['noakta']; ?>">
               </div>
               <div class="form-group">
+                <label>Jenis Hak</label>
+                <select class="form-control" name="jenishak" required id="jk">
+                       <option value="null">-Pilih Jenis Hak-</option>
+                       <option value="HM"
+                        <?php if($row['jenishak']=='HM'){echo "selected=selected";}?>>
+                        Hak Milik
+                      </option>
+                       <option value="HGU"
+                        <?php if($row['jenishak']=='HGU'){echo "selected=selected";}?>>
+                          Hak Guna Usaha
+                      </option>
+                       <option value="HGB"
+                        <?php if($row['jenishak']=='HGB'){echo "selected=selected";}?>>
+                          Hak Guna Bangunan
+                      </option>
+                       <option value="HP"
+                        <?php if($row['jenishak']=='HP'){echo "selected=selected";}?>>
+                          Hak Pakai
+                      </option>
+                       <option value="HS"
+                        <?php if($row['jenishak']=='HS'){echo "selected=selected";}?>>
+                          Hak Sewa
+                      </option>
+                       <option value="HMT"
+                        <?php if($row['jenishak']=='HMT'){echo "selected=selected";}?>>
+                         Hak Membuka Tanah
+                      </option>
+                       <option value="HMHH"
+                        <?php if($row['jenishak']=='HMHH'){echo "selected=selected";}?>>
+                         Hak Memungut - Hasil Hutan
+                      </option>
+                       <option value="LAIN"
+                        <?php if($row['jenishak']=='LAIN'){echo "selected=selected";}?>>
+                         Hak - Hak Lain
+                      </option>
+                         
+                    </select>
+              </div>
+                <div class="form-group" id="nohaks">
+                      <label>No Hak</label>
+                      <input type="text" class="form-control" ="" name="nohak" value="<?php echo $row['nohak']; ?>">
+                    </div> 
+              <div class="form-group">
                 <label>Jenis Aset</label>
                 <select class="form-control" name="jenisaset" required disabled>
                   <option value="null">-Pilih Aset-</option>
@@ -131,10 +177,11 @@
                 </select>
               </div>
               <div class="row">
+
                 <div class="col-md-6">
                    <div class="form-group">
                     <label>LUAS TANAH</label>
-                    <input type="text" class="form-control" name="luastanah" value="<?php echo $row['luastanah']; ?>" disabled>
+                    <input type="text" class="form-control" name="luastanah" disabled value="<?php echo $row['luastanah']; ?>">
                   </div>     
                 </div>
                 
@@ -190,7 +237,9 @@
                   <textarea class="form-control" name="keterangan" required disabled>
                     <?php echo $row['keterangan']; ?>
                   </textarea>
-              </div>  
+              </div> 
+
+              
               </div>
             </div>
           </div>

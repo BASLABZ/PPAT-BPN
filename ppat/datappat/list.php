@@ -32,6 +32,7 @@
                   <th>Nama yang Mengalihkan</th>
                   <th>Alamat yang Mengalihkan</th>
                   <th>Alamat Tanah</th>
+                  <th>Jenis Hak & Nomor Hak</th>
                   <th>Jenis Akta</th>
                   <th>No Akta</th>
                   <th>Tanggal Akta</th>
@@ -52,6 +53,7 @@
                                   <td>".$baris['namapemohon']."</td>
                                   <td>".$baris['alamatpemohon']."</td>
                                   <td>".$baris['alamattanah']."</td>
+                                  <td>".$baris['jenishak'].", ".$baris['nohak']."</td>
                                   <td>".$baris['jenisakta']."</td>
                                   <td>".$baris['noakta']."</td>
                                   <td>".$tanggalakta."</td>

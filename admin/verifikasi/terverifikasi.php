@@ -24,6 +24,24 @@
                 <h3 class="box-title">Data Akta</h3>
               </div>
               <div class="box-body">
+              <div class="row">
+                <form class="role" method="POST" action="index.php?hal=verifikasi/result_filter_ppat_verifikasi">
+                <div class="col-md-6">
+                    
+                      <select class="form-control select2" name="idpengguna">
+                        <option>Pilih PPAT</option>
+                        <?php 
+                          $querypengguna = mysql_query("SELECT * FROM pengguna  where level='ppat' order by idpengguna ASC");
+                          while ($barispengguna = mysql_fetch_array($querypengguna)) {
+                         ?>
+                         <option value="<?php echo $barispengguna['idpengguna']; ?>"><?php echo $barispengguna['namalengkap']; ?></option>
+                         <?php } ?>
+                      </select>
+                    
+                  </div>
+                  <div class="col-md-3"><button type="submit" class="btn btn-success"> <span class="fa fa-search"></span></button></div> 
+                  </form>
+              </div>
                 <table class="table table-responsive table-bordered" id="table">
                 <thead>
                   <th>No</th>
@@ -31,6 +49,7 @@
                   <th>Nama yang Mengalihkan</th>
                   <th>Alamat yang Mengalihkan</th>
                   <th>Alamat Tanah</th>
+                  <th>Jenis Hak & Nomor Hak</th>
                   <th>Jenis Akta</th>
                   <th>No Akta</th>
                   <th>Tanggal Akta</th>
@@ -53,6 +72,7 @@
                                   <td>".$baris['namapemohon']."</td>
                                   <td>".$baris['alamatpemohon']."</td>
                                   <td>".$baris['alamattanah']."</td>
+                                   <td>".$baris['jenishak'].", ".$baris['nohak']."</td>
                                   <td>".$baris['jenisakta']."</td>
                                   <td>".$baris['noakta']."</td>
                                   <td>".$tanggalakta."</td>

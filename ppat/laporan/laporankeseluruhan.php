@@ -91,7 +91,7 @@
 				    </tr>
 				    <?php 
 				    	$no = 1;
-				    	$query = mysql_query("SELECT * FROM ppat order by idppat DESC");
+				    	$query = mysql_query("SELECT * FROM ppat where idpengguna = '".$_SESSION['idpengguna']."' order by idppat DESC");
 				    	while ($row = mysql_fetch_array($query)) {
 				    		 $konverttanggal = jin_date_str($row['tanggalinput']);
 				    		 $konverttanggalssp = jin_date_str($row['tgl_ssp']);
@@ -104,7 +104,7 @@
 				    				<td>".$row['jenisakta']."</td>
 				    				<td>".$row['namapemohon'].", ".$row['alamatpemohon']."</td>
 				    				<td>".$row['namapenerima'].", ".$row['alamatpenerima']."</td>
-				    				<td></td>
+				    				 <td>".$row['jenishak'].", ".$row['nohak']."</td>
 				    				<td>".$row['alamattanah']."</td>
 				    				<td>".$row['luastanah']."</td>
 				    				<td>".$row['luasbangunan']."</td>

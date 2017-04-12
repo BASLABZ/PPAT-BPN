@@ -119,6 +119,49 @@
                 <input type="text" class="form-control" name="noakta" required disabled value="<?php echo $row['noakta']; ?>">
               </div>
               <div class="form-group">
+                <label>Jenis Hak</label>
+                <select class="form-control" name="jenishak" required id="jk">
+                       <option value="null">-Pilih Jenis Hak-</option>
+                       <option value="HM"
+                        <?php if($row['jenishak']=='HM'){echo "selected=selected";}?>>
+                        Hak Milik
+                      </option>
+                       <option value="HGU"
+                        <?php if($row['jenishak']=='HGU'){echo "selected=selected";}?>>
+                          Hak Guna Usaha
+                      </option>
+                       <option value="HGB"
+                        <?php if($row['jenishak']=='HGB'){echo "selected=selected";}?>>
+                          Hak Guna Bangunan
+                      </option>
+                       <option value="HP"
+                        <?php if($row['jenishak']=='HP'){echo "selected=selected";}?>>
+                          Hak Pakai
+                      </option>
+                       <option value="HS"
+                        <?php if($row['jenishak']=='HS'){echo "selected=selected";}?>>
+                          Hak Sewa
+                      </option>
+                       <option value="HMT"
+                        <?php if($row['jenishak']=='HMT'){echo "selected=selected";}?>>
+                         Hak Membuka Tanah
+                      </option>
+                       <option value="HMHH"
+                        <?php if($row['jenishak']=='HMHH'){echo "selected=selected";}?>>
+                         Hak Memungut - Hasil Hutan
+                      </option>
+                       <option value="LAIN"
+                        <?php if($row['jenishak']=='LAIN'){echo "selected=selected";}?>>
+                         Hak - Hak Lain
+                      </option>
+                         
+                    </select>
+              </div>
+                <div class="form-group" id="nohaks">
+                      <label>No Hak</label>
+                      <input type="text" class="form-control" ="" name="nohak" value="<?php echo $row['nohak']; ?>">
+                    </div> 
+              <div class="form-group">
                 <label>Jenis Aset</label>
                 <select class="form-control" name="jenisaset" required disabled>
                   <option value="null">-Pilih Aset-</option>
