@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="../assets/datatables/dataTables.bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../assets/style-bas.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style type="text/css">
      .dim_about {box-shadow: inset 0 0 0 rgba(30, 172, 174, 0.39), 0 10px 0 0 rgba(30, 172, 174, 0), 0 10px 15px rgba(123, 83, 83, 0.58);}
   </style>
@@ -62,7 +63,7 @@
 <script src="../assets/plugins/knob/jquery.knob.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="../assets/plugins/daterangepicker/daterangepicker.js"></script>
-<script src="../assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- <script src="../assets/plugins/datepicker/bootstrap-datepicker.js"></script> -->
 <script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="../assets/plugins/fastclick/fastclick.js"></script>
@@ -75,14 +76,39 @@
 </html>
 
 <script>
+
   //  panggil plugin datatabel
   $('#table').DataTable({"scrollX": true});
-  // panggil plugin datepicter
-  $('#tanggalakta').datepicker();
-  $('#tanggalssp').datepicker();
-  $('#tgl_bphtb').datepicker();
-  $('#tgl_periode').datepicker();
   
+  
+  $('#tanggalssp').datepicker({beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 0 && day != 6)];
+    }});
+  $('#tgl_bphtb').datepicker({beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 0 && day != 6)];
+    }});
+  $('#tgl_periode').datepicker({beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 0 && day != 6)];
+    }});
+
+ $(document).ready(function(){
+    $( "#tanggalakta" ).datepicker({
+        onClose: function() {
+            var date2 = $('#tanggalakta').datepicker('getDate');
+            date2.setDate(date2.getDate()+6)
+            $( "#tanggal7hari" ).datepicker("setDate", date2);
+        },beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 0 && day != 6)];
+    }
+    });
+    $( "#tanggal7hari" ).datepicker();
+});
+  
+
 </script>
 
 

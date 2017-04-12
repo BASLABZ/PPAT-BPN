@@ -18,14 +18,14 @@
                                      luasbangunan, harga, NOP,
                                      NJOP, tahun, tgl_ssp,
                                      jumlah_ssp, tgl_bphtb, jumlah_bphtb,
-                                     status, verifikasi, keterangan,file,idpengguna,jenishak,nohak
+                                     status, verifikasi, keterangan,file,idpengguna,jenishak,nohak,tgl_penyerahan
                                      ) 
                               VALUES (
                                     NOW(),'".$_POST['namapemohon']."',
                                     '".$_POST['alamatpemohon']."', '".$_POST['namapenerima']."',
                                     '".$_POST['alamatpenerima']."', '".$_POST['alamattanah']."',
                                     '".$_POST['jenisakta']."', '".$_POST['noakta']."',
-                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."','".$_POST['jenishak']."','".$_POST['nohak']."')
+                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."','".$_POST['jenishak']."','".$_POST['nohak']."','".jin_date_sql($_POST['tgl_penyerahan'])."')
                                       ");
                           }else{
                             $query  = mysql_query("INSERT INTO ppat (tanggalinput, namapemohon,
@@ -35,14 +35,14 @@
                                      luasbangunan, harga, NOP,
                                      NJOP, tahun, tgl_ssp,
                                      jumlah_ssp, tgl_bphtb, jumlah_bphtb,
-                                     status, verifikasi, keterangan,file,idpengguna,jenishak,nohak
+                                     status, verifikasi, keterangan,file,idpengguna,jenishak,nohak,tgl_penyerahan
                                      ) 
                               VALUES (
                                     NOW(),'".$_POST['namapemohon']."',
                                     '".$_POST['alamatpemohon']."', '".$_POST['namapenerima']."',
                                     '".$_POST['alamatpenerima']."', '".$_POST['alamattanah']."',
                                     '".$_POST['jenisakta']."', '".$_POST['noakta']."',
-                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."','".$_POST['jenishak']."','".$_POST['nohak']."')
+                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','".$fileName."','".$_SESSION['idpengguna']."','".$_POST['jenishak']."','".$_POST['nohak']."','".jin_date_sql($_POST['tgl_penyerahan'])."')
                                       ");
                           }
                                               
@@ -57,14 +57,14 @@
                                      luasbangunan, harga, NOP,
                                      NJOP, tahun, tgl_ssp,
                                      jumlah_ssp, tgl_bphtb, jumlah_bphtb,
-                                     status, verifikasi, keterangan,file,idpengguna
+                                     status, verifikasi, keterangan,file,idpengguna,tgl_penyerahan
                                      ) 
                               VALUES (
                                     NOW(),'".$_POST['namapemohon']."',
                                     '".$_POST['alamatpemohon']."', '".$_POST['namapenerima']."',
                                     '".$_POST['alamatpenerima']."', '".$_POST['alamattanah']."',
                                     '".$_POST['jenisakta']."', '".$_POST['noakta']."',
-                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','','".$_SESSION['idpengguna']."');
+                                    '".$konverttanggal."', '".$_POST['jenisaset']."', '".$_POST['luastanah']."', '".$_POST['luasbangunan']."', '".$_POST['harga']."', '".$_POST['NOP']."', '".$_POST['NJOP']."', '".$tahun."', '".$konversitgl_ssp."', '".$_POST['jumlah_ssp']."', '".$konversitgl_bphtb."', '".$_POST['jumlah_bphtb']."', 'MENUNGGU', 'BELUM DIVERIFIKASI', '".$_POST['keterangan']."','','".$_SESSION['idpengguna']."','".jin_date_sql($_POST['tgl_penyerahan'])."');
                                       ");  
                           }
 
@@ -77,6 +77,8 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>DATA AKTA PPAT</h1>
+ 
+      
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Data Akta</a></li>
@@ -147,6 +149,7 @@
                 </div>
                 <div class="form-gruop">
                   <label>Tanggal Akta</label>
+                   <input type="hidden" id="tanggal7hari" class="form-control" name="tgl_penyerahan">
                   <div class="input-group">
                     <input type="text" class="form-control" id="tanggalakta" name="tanggalakta">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -241,6 +244,7 @@
                         <div class="col-md-8">
                           <label>Tanggal SSP</label>
                           <input type="text" class="form-control" id="tanggalssp" name="tgl_ssp" required> 
+                         
                         </div>
                       </div>
                       <div class="form-group">
